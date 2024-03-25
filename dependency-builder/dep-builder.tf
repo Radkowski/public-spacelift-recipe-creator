@@ -22,8 +22,8 @@ resource "spacelift_stack_dependency" "stack-dep" {
 
 resource "spacelift_stack_dependency_reference" "stack-dep-ref" {
   stack_dependency_id = spacelift_stack_dependency.stack-dep.id
-  input_name          = var.SRC_PARAM
-  output_name         = join("_", ["TF_VAR", var.DST_PARAM])
+  output_name          = var.SRC_PARAM
+  input_name         = join("_", ["TF_VAR", var.DST_PARAM])
 }
 
 
