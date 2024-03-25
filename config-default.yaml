@@ -1,0 +1,155 @@
+Recipe:
+  TemplateVersion: 0.0.1
+  Space:
+    Parent_ID:    "Space_ID"
+    Family:       "CFP"
+    Name:         "My_first_Recipe"
+    Version:      "0.0.1"
+    Description:  "Some fancy description"
+    Tags:
+      - 
+        key: value
+        key2: value2
+        key3: value3
+
+  GlobalVariables:
+    - 
+      name: alfa
+      value: '{ KeyName: "something", InstanceType: "t4g.nano", AmiSSMLocation: "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-arm64-gp2"}'
+      secret: false
+    - 
+      name: charlie
+      value: delta
+      secret: false
+    - 
+      name: echo
+      value: foxtrot
+      secret: true
+
+  CloudIntegrations:
+    CloudIntegrationAWS:
+      Env:    AWS
+      Id:     IntegrationID
+      read:   true
+      write:  true
+    CloudIntegrationGCP:
+      Env:    GCP
+      Id:     IntegrationID
+      read:   true
+      write:  true
+    CloudIntegrationVMware:
+      Env:    WMWARE
+      Id:     IntegrationID
+      read:   true
+      write:  true
+
+
+# Stack's Deployment Type accepts following codes:
+
+# TFGH:   Terraform stack using github.com as VCS
+# TFBBC:  Terraform stack using Bitbucket Cloud as VCS
+# TFBBDC: Terraform stack using Bitbucket Data Center as VCS
+# TFGCA:  Terraform stack using a GitHub Custom Application.
+# TFGL:   Terraform stack using GitLab as VCS
+# TFGHSS: Terraform stack using github.com as VCS and enabling smart sanitization
+# TFGHES: Terraform stack using github.com as VCS and enabling external state access
+# CFGH:   CloudFormation stack using github.com as VCS
+# PLGH:   Pulumi stack using github.com as VCS
+# K8SGH:  Kubernetes stack using github.com as VCS
+# ABEGH:  Ansible stack using github.com as VCS
+
+  Stacks:
+  - 
+    Name: name_must_be_unique
+    Type: "TFGH"
+    Parameters:       
+      administrative    : true
+      autodeploy        : true
+      branch            : "code"
+      description       : "Stack Descriotion"
+      name              : "Somesstackname"
+      project_root      : ""
+      repository        : "repo_info"
+      terraform_version : "1.5.0"
+
+  - 
+    Name: name_must_be_unique
+    Type: "TFGH"
+    Parameters:       
+      administrative    : true
+      autodeploy        : true
+      branch            : "code"
+      description       : "Stack Description"
+      name              : "Somesstackname"
+      project_root      : ""
+      repository        : "repo_info"
+      terraform_version : "1.5.0"
+
+  - 
+    Name: name_must_be_unique
+    Type: "TFGL"
+    Parameters:      
+      administrative    : true
+      autodeploy        : true
+      branch            : "code"
+      description       : "Stack Descriotion"
+      name              : "Somesstackname"
+      project_root      : ""
+      repository        : "repo_info"
+      terraform_version : "1.5.0"
+    
+  - 
+    Name: name_must_be_unique
+    Type: "TFGH"
+    Parameters:      
+      namespace         : somename
+      administrative    : true
+      autodeploy        : true
+      branch            : "code"
+      description       : "Stack Description"
+      name              : "Somesstackname"
+      project_root      : ""
+      repository        : "repo_info"
+      terraform_version : "1.5.0"
+
+  - 
+    Name: name_must_be_unique
+    Type: "CFGH"
+    Parameters:      
+      entry_template_file : "some.yaml"
+      region              : "eu-central-1"
+      template_bucket     : "s3://bucket"
+      stack_name          : "some-stack-name"
+      autodeploy          : true
+      branch              : "code"
+      description         : "Stack Descriotion"
+      name                : "Somesstackname"
+      project_root        : ""
+      repository          : "repo_info"
+
+
+Dependencies:
+  - 
+    Src:
+      StackName: must_match_stack_above
+      ParamName: 
+    Dst:
+      StackName:
+      ParamName:
+    Description: "some description"
+  - 
+    Src:
+      StackName: must_match_stack_above
+      ParamName: 
+    Dst:
+      StackName:
+      ParamName:
+    Description: "some description"
+  - 
+    Src:
+      StackName: must_match_stack_above
+      ParamName: 
+    Dst:
+      StackName:
+      ParamName:
+    Description: "some description"
